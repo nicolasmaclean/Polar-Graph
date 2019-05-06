@@ -1,0 +1,19 @@
+*, body, html{
+    margin: 0;
+    padding: 0;
+}
+
+input{
+    width: 50%;
+    height: 3rem;
+    font-size:2rem;
+    float: left;
+}
+
+#updateButton{
+    border: 1px black solid;
+    font-size: 1.5rem;
+    padding: .7rem;
+    float: right;
+    cursor: pointer;
+}
