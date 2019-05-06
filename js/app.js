@@ -1,8 +1,5 @@
 var canvas = document.getElementById('canvas');
 const colors = ["#0A08FF", "#0457E8", "#06BCFF", "#5D04E8", "#C505FF"];
-const equationInput = document.getElementById('equation');
-const updateButton = document.getElementById('button');
-// var equation = 2*Math.sin(14*theta);
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -26,18 +23,13 @@ window.addEventListener('resize', function(){
     init();
 })
 
-updateButton.addEventListener('click', () => {
-    // console.log("thing");
-    equation = equationInput.value;
-})
-
 function getRandomColor(){
     return colors[Math.floor(Math.random()*colors.length)];
 }
 
 function r(theta){
     // return equation;
-    return 2*Math.sin(14*theta);
+    return 2*Math.sin(4*theta);
 }
 
 function Circle(x, y, velocity, radius, radian, color) {
@@ -81,7 +73,7 @@ function init(){
     var y = canvas.height/2;
     var color = getRandomColor();
     var radian = 0;
-    var velocity = .05;
+    var velocity = .025;
 
     for(var i = 0; i < 10; i++){
         circles.push(new Circle(x, y, velocity, radius, radian-.01*i, color));
@@ -90,12 +82,11 @@ function init(){
 
 function animate(){
     requestAnimationFrame(animate);
-    c.fillStyle = "rgba(255, 255, 255, 0.1)";
+    c.fillStyle = "rgba(255, 255, 255, 0.05)";
     c.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
     for(var i = 0; i < circles.length; i++){
         circles[i].update();
-        console.log(circles);
     }
 }
 
