@@ -5,6 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
+var w = 75;
 
 var mouse = {
     x: canvas.width/2,
@@ -53,8 +54,8 @@ function Circle(x, y, velocity, radius, radian, color) {
     }
 
     this.update = function() {
-        this.x = this.origin.x + (r(this.radian))*(Math.cos(this.radian))*75;
-        this.y = this.origin.y + (r(this.radian))*(Math.sin(this.radian))*75;
+        this.x = this.origin.x + (r(this.radian))*(Math.cos(this.radian))*w;
+        this.y = this.origin.y + (r(this.radian))*(Math.sin(this.radian))*w;
         if(this.radian === 100)
             this.radian = 0;
         this.radian += velocity;
@@ -77,6 +78,12 @@ function init(){
 
     for(var i = 0; i < 10; i++){
         circles.push(new Circle(x, y, velocity, radius, radian-.01*i, color));
+    }
+
+    if(canvas.height < canvas.width){
+        w = canvas.height/5;
+    } else {
+        w = canvas.width/5;
     }
 }
 
